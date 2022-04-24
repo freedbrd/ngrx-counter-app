@@ -2,13 +2,13 @@
         class="fz-60 p-50 m-20">+1
 </button>
 <button (click)="decrease()"
-        [disabled]="counter <= MIN_COUNTER_VALUE"
+        [disabled]="(count$ | async) <= MIN_COUNTER_VALUE"
         class="fz-60 p-50 m-20">-1
 </button>
 <button (click)="reset()"
         class="fz-60 p-50 m-20">reset
 </button>
 
-<p class="fz-60">Counter: {{counter}}</p>
+<p class="fz-60">Counter: {{count$ | async}}</p>
 <p class="fz-60"
-   *ngIf="updatedDate">Updated at: {{updatedDate | date: 'MMM d, y, h:mm:ss a'}}</p>
+   *ngIf="updatedAt$ | async as updatedAt">Updated at: {{updatedAt | date: 'MMM d, y, h:mm:ss a'}}</p>
